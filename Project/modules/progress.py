@@ -1,16 +1,23 @@
 import json
+import os
 
 progress_file='Project/modules/progress.json'
 
 def save_progress(progress):
-    with open(progress_file, 'w') as file:
-        json.dump(progress, file, indent=4)
+    try:
+        with open(progress_file, 'w') as file:
+            json.dump(progress, file, indent=4)
+    except IOError:
+        print('Enable to save progress.')
 
 def load_progress():
+    if not os.path.exists(progress_file):
+        return {}
     try:
         with open(progress_file, 'r') as file:
             return json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):
+        print('Unable to load progress. Resetting progress.')
         return{'completed_topics': [],
                'quiz_scores': {},
                'last_accessed': None}
