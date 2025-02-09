@@ -1,3 +1,5 @@
+from modules.progress import mark_topic_completed
+
 def show_topics():
     topics={1: 'Variables',
             2: 'Data Types',
@@ -36,23 +38,25 @@ def show_topics():
     
 def topic_content(choice):
     topics = {
-        1: ('Variables', "Variables store data in memory. No need to declare type explicitly.\nExample: x = 10  # x stores the integer 10"),
-        2: ('Data Types', "Python has int, float, str, list, tuple, dict, etc.\nExample: name = 'Alice'  # A string variable"),
-        3: ('Control Flow', "Control flow (if-else) helps make decisions in code.\nExample:\nif x > 5:\n    print('x is greater than 5')"),
-        4: ('Loops', "Loops repeat code multiple times. Python has 'for' and 'while' loops.\nExample:\nfor i in range(3):\n    print(i)  # Prints 0, 1, 2"),
-        5: ('Functions', "Functions help organize reusable code. Defined using 'def'.\nExample:\ndef greet(name):\n    return 'Hello ' + name"),
-        6: ('Lists & Tuples', "Lists are mutable, tuples are immutable.\nExample:\nnumbers = [1, 2, 3]  # List\ncoordinates = (10, 20)  # Tuple"),
-        7: ('Dictionaries', "Dictionaries store key-value pairs.\nExample:\nstudent = {'name': 'John', 'age': 20}"),
-        8: ('File Handling', "Python allows reading/writing files using open().\nExample:\nwith open('file.txt', 'w') as f:\n    f.write('Hello, World!')"),
-        9: ('Exception Handling', "Use try-except to handle errors.\nExample:\ntry:\n    x = 10 / 0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')"),
-        10: ('Modules & Imports', "Modules help organize code.\nExample:\nimport math\nprint(math.sqrt(16))  # Output: 4.0")
+        1: ('Variables', "Variables store data in memory. No need to declare type explicitly.\nExample: x = 10  # x stores the integer 10", 5),
+        2: ('Data Types', "Python has int, float, str, list, tuple, dict, etc.\nExample: name = 'Alice'  # A string variable", 6),
+        3: ('Control Flow', "Control flow (if-else) helps make decisions in code.\nExample:\nif x > 5:\n    print('x is greater than 5',)", 8),
+        4: ('Loops', "Loops repeat code multiple times. Python has 'for' and 'while' loops.\nExample:\nfor i in range(3):\n    print(i)  # Prints 0, 1, 2", 7),
+        5: ('Functions', "Functions help organize reusable code. Defined using 'def'.\nExample:\ndef greet(name):\n    return 'Hello ' + name", 8),
+        6: ('Lists & Tuples', "Lists are mutable, tuples are immutable.\nExample:\nnumbers = [1, 2, 3]  # List\ncoordinates = (10, 20)  # Tuple", 6),
+        7: ('Dictionaries', "Dictionaries store key-value pairs.\nExample:\nstudent = {'name': 'John', 'age': 20}", 6),
+        8: ('File Handling', "Python allows reading/writing files using open().\nExample:\nwith open('file.txt', 'w') as f:\n    f.write('Hello, World!')", 9),
+        9: ('Exception Handling', "Use try-except to handle errors.\nExample:\ntry:\n    x = 10 / 0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')", 10),
+        10: ('Modules & Imports', "Modules help organize code.\nExample:\nimport math\nprint(math.sqrt(16))  # Output: 4.0", 7)
     }
 
     topic = topics.get(choice)
     if topic:
         print(f'\n_______ {topic[0]} _______')
         print(topic[1])
-        run_quiz(choice)
+        score = int(input(f"\nEnter your quiz score for {topic[0]}: "))
+        mark_topic_completed(topic[0], score)
+        # run_quiz(choice)
     else:
         print('Invalid choice. Please enter a valid topic number.')
 
