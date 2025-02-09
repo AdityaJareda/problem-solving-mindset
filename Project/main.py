@@ -11,7 +11,7 @@ main_menu={1: 'Learn a topic',
 def display_menu():
     print('\n__________ Problem Solving Mindset __________')
     for key,value in main_menu.items():
-        print(f'{key}.{value}')
+        print(f'{key}. {value}')
     print('_____________________________________________\n')
 
 def main():
