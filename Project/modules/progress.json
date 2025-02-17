@@ -1,9 +1,11 @@
 {
     "completed_topics": [
-        "Variables"
+        "Variables",
+        "Data Types"
     ],
-    "quiz_scores": {
-        "Variables": 8
+    "quiz_score": {
+        "Variables": 1,
+        "Data Types": 1
     },
-    "last_accessed": "Variables"
+    "last_accessed": "Data Types"
 }
